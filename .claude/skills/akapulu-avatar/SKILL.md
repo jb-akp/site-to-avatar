@@ -81,8 +81,9 @@ Write the files first, every time. They are the deliverable even when there is n
      ...`. Without it her greeting drifts between calls, which is noticeable when anyone records
      more than one take.
    - Follow the opening line with **"then wait for the caller to speak"**, and say tools are for
-     answering a question that has been asked. Otherwise she fires a lookup before saying hello,
-     which costs a call and looks strange in the transcript.
+     answering a question that has been asked. She still greets first, but without this her
+     opening turn also fires a lookup nobody asked for. It costs a retrieval call and the tool
+     popup appears on screen during the hello, which is confusing to watch.
    - The `rag` function's `knowledge_base_id` is a placeholder until step 5 creates the real one.
    - Give each tool a description that says **when to call it**, not what it is. That description
      is the only thing the model reads when deciding. For vision, ask her to *name* what she sees
