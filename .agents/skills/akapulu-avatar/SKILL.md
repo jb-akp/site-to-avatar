@@ -79,13 +79,18 @@ Write the files first, every time. They are the deliverable even when there is n
      one question at a time, and stop when the caller interrupts.
    - Tell her to look things up *first, every time*, and to say she will check with the team when
      the file does not cover it, rather than filling the gap herself.
-   - **She never mentions her own knowledge, and she is given the words to use instead.** No
-     "I see that", no "in the information I have", no "that is not in my files". A ban on its
-     own is not enough: the moment a lookup comes back empty she needs somewhere to go, and
-     without a replacement she will reach for the file. Write the replacement into the persona
-     as a line she can say: *"I'm not sure about that one, let me get the team to confirm.
-     Would you like me to note it down?"* She is a person who works there. She either knows
-     it, or she checks.
+   - **She never narrates the lookup, and she is given the words to use instead.** Ban the
+     behaviour, not a list of phrases. A blocklist gets routed around: told not to say "in the
+     information I have", she came back with "I didn't find specific information about that"
+     and "the privacy statements I found" on the very next run. Both still describe a search
+     happening behind her, which is what makes her sound like a search box instead of the
+     receptionist. So write the rule as: never refer to looking, finding, searching, checking
+     records, or to what she does or does not have. The caller asked a person a question.
+     A ban on its own is not enough either. The moment a lookup comes back empty she needs
+     somewhere to go, and without a replacement she will reach for the file. Write the
+     replacement into the persona as a line she can say: *"I'm not sure about that one, let me
+     get the team to confirm. Would you like me to note it down?"* She is a person who works
+     there. She either knows it, or she checks.
    - **When the lookup does not answer the question that was asked, she says so.** Retrieval
      returns the nearest match, not the right one. Asked "is this conversation private?" she
      will get back the website's cookie policy and read it out, which is accurate and useless.
