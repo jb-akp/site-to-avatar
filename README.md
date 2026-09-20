@@ -28,23 +28,37 @@ creates the knowledge base, uploads the text, waits for it to embed, and mints a
 
 The one thing you do by hand is pick her face, because that is the only part with no API.
 
-## AI-assisted setup
+## Install it into your own site
 
-Clone this repo, open the folder in **Codex** or **Claude Code**, and say:
-
-> install this skill and set me up
-
-The agent reads `AGENTS.md` (Codex) or `CLAUDE.md` (Claude Code) and takes it from there.
-
-## Five-minute setup, by hand
+The skill has to live inside the folder your agent has open, so step one is putting it there.
 
 ```bash
 git clone https://github.com/jb-akp/site-to-avatar.git
 cd site-to-avatar
+./scripts/install.sh ~/path/to/your-website
+```
+
+That copies the skill, the scripts and the agent instructions into your site's folder, for both
+Codex and Claude Code. Then:
+
+```bash
+cd ~/path/to/your-website
 ./scripts/setup.sh          # asks for your Akapulu key, writes .env, verifies it
 ```
 
-Then open the folder in your agent, point it at a site, and say the sentence above.
+Open that folder in **Codex** or **Claude Code** and say:
+
+> build me an avatar assistant from this site
+
+It finds the skill on its own. You do not have to name it.
+
+## Or let the agent install it
+
+Clone this repo, open **this** folder in your agent, and say:
+
+> install this skill into ~/path/to/my-website
+
+It reads `AGENTS.md` or `CLAUDE.md` and does the copying for you.
 
 **No key yet?** You still get most of it. The skill always writes both files first, and they work
 on their own: paste `scenario.json` into JSON mode on a new scenario at akapulu.com, and upload
