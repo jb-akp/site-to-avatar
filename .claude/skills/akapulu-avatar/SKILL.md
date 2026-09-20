@@ -30,6 +30,12 @@ Write the files first, every time. They are the deliverable even when there is n
 
 ## Workflow
 
+0. **Check whether it is already built.** If `akapulu/scenario.json` exists, do not quietly
+   rebuild and do not quietly reuse. Say what you found in one line, then ask: rebuild from the
+   site as it is now, or keep what is there? Only skip the question if the user's words already
+   answered it ("rebuild", "start over", "update her"). Guessing either way wastes their time,
+   and on a second run the site has usually changed.
+
 1. **Find the site and read it.**
    - A folder: read `index.html` and any local pages it links to. A URL: fetch it.
    - Pull out, and keep the wording: business name, what they sell or do, prices, hours,
