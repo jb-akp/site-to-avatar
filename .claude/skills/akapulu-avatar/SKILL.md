@@ -73,9 +73,16 @@ Write the files first, every time. They are the deliverable even when there is n
      one question at a time, and stop when the caller interrupts.
    - Tell her to look things up *first, every time*, and to say she will check with the team when
      the file does not cover it, rather than filling the gap herself.
+   - **She never mentions her own knowledge.** No "I see that", no "in the information I have",
+     no "that is not in my files". She is a person who works there: she either knows it, or she
+     will check with the team. Saying where an answer came from breaks the call, and it is the
+     single most common way one of these assistants stops sounding human.
    - Give the node a **fixed opening line** in `task_instruction`: `Open with exactly these words:
      ...`. Without it her greeting drifts between calls, which is noticeable when anyone records
      more than one take.
+   - Follow the opening line with **"then wait for the caller to speak"**, and say tools are for
+     answering a question that has been asked. Otherwise she fires a lookup before saying hello,
+     which costs a call and looks strange in the transcript.
    - The `rag` function's `knowledge_base_id` is a placeholder until step 5 creates the real one.
    - Give each tool a description that says **when to call it**, not what it is. That description
      is the only thing the model reads when deciding. For vision, ask her to *name* what she sees
@@ -130,14 +137,17 @@ Write the files first, every time. They are the deliverable even when there is n
 ## Required response format
 
 ```markdown
-Built.
+Built. [Talk to <her name>](https://live.akapulu.com/session/...).
 
-- Live link: <https://live.akapulu.com/session/...>
-- Knowledge: `akapulu/knowledge.txt` (N KB, from M pages)
-- Scenario: `akapulu/scenario.json` (1 node, 2 tools) — validated
+- [Knowledge](akapulu/knowledge.txt): N KB from M page(s).
+- [Scenario](akapulu/scenario.json): one node, two tools — validated.
 - Avatar: `<uuid>`
-- Try asking her: "<question only this site can answer>" · "<a second one>" · "What am I holding?"
+
+Try: "<question only this site can answer>" · "<a second one>" · "What am I holding?"
 ```
+
+Make the link a **named hyperlink**, not a raw URL. A session URL is forty characters of noise,
+and "Talk to Clara" is the thing the user actually wants to click.
 
 When there is no API key:
 
@@ -157,6 +167,7 @@ Written, not created — no AKAPULU_API_KEY found.
   response or from the user.
 - Never put a fact in the knowledge file that is not on the site.
 - Never put a fact in `role_instruction`. Facts live in the knowledge file, always.
+- Never let her narrate her own knowledge base out loud. She knows things, or she checks.
 - Never ask for the avatar UUID before the knowledge base is completed and the scenario has
   passed validation. It is the last thing you need, so it is the last thing you ask for.
 - Never create a scenario from JSON that has not passed the validator.
