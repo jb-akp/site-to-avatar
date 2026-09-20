@@ -16,3 +16,11 @@ before any treatment, then offers to note your question down.
 
 **Not one fact lives in her persona.** Every answer is looked up. That is why editing
 `knowledge.txt` changes what she says.
+
+## The avatar used in the video
+
+`1f777f64-3758-4a7d-9cbc-c64ae654f7d1` — Clara, from the public catalog.
+
+The skill will always ask you to pick your own, because there is no API that lists avatars and
+because you should see the faces before you choose one. If you just want it to work, hand it
+this one.

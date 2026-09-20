@@ -41,6 +41,11 @@ Write the files first, every time. They are the deliverable even when there is n
    - Plain UTF-8 text, headed sections, one fact per line. No markdown tables, no HTML.
    - Under 130 KB. Over that, split into two documents in the same knowledge base.
    - Only what the site says. Mark anything you inferred, or leave it out.
+   - **Watch for content that is true of the website but false on a phone call.** A privacy notice
+     saying "nothing leaves your browser" describes a form on the page, not a live avatar call
+     that runs on a server. Copy the claim in, but scope it: say which feature it describes, and
+     add a line to the persona telling her not to apply it to the conversation itself. Opening
+     hours and prices travel fine; anything about data, delivery or "instantly" may not.
    - Show the user a short summary of what went in, and the file path.
 
 3. **Write `akapulu/scenario.json`.**
