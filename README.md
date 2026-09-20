@@ -63,6 +63,14 @@ Akapulu's free plan gives you **10 credits in total**, a **3 minute cap** on any
 **watermark** on the avatar. That is enough to build this, test it properly, and show someone.
 It is not enough to run a business on. Pricing is at [akapulu.com](https://akapulu.com).
 
+Credits are spent when someone **talks to her**. Writing the two files, creating a knowledge base
+and creating a scenario do not draw them down, so you can build and rebuild as many times as you
+like and only spend when you pick up the phone.
+
+**You do need a free account before you start**, for two reasons: the API key, and the avatar
+catalog, which is behind a login. Sign up at [akapulu.com](https://akapulu.com), then run
+`./scripts/setup.sh`.
+
 The agent side costs whatever your Codex or Claude subscription costs. If you use an OpenAI API
 key instead of a ChatGPT login, reading a site and writing these two files is cents, not dollars.
 

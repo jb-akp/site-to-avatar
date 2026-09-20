@@ -100,7 +100,8 @@ Write the files first, every time. They are the deliverable even when there is n
    - Put the real `kb_id` into the `rag` function, validate again, then create the scenario.
    - **The avatar is the one thing with no API.** Ask the user to open
      https://akapulu.com/catalog, pick a face, and copy the UUID out of that avatar's page URL.
-     Never guess one, never reuse an id from an example.
+     Never guess one, never reuse an id from an example. The catalog sits behind a login, so if
+     they do not have an account yet, that is the moment they need one.
    - **Ask for it once, and ask for it here.** Not at the start, not while the files are being
      written. By the time you ask, the knowledge base should be `completed` and the scenario
      should have passed validation with the real id in it, so the avatar UUID is the only thing
