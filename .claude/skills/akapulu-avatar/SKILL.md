@@ -55,11 +55,22 @@ Write the files first, every time. They are the deliverable even when there is n
    - `role_instruction` carries: who she is, where she works, how she speaks, and **when to
      reach for each tool**. Match the site's register; a dental practice is warm and calm, a law
      firm is not.
+   - **Write it in this order: who she is, how she sounds, then the rules.** Open with two or
+     three sentences of character before a single instruction — she likes people and it shows,
+     she has done this job for years. A persona that opens with prohibitions produces an avatar
+     who sounds like a compliance document, and the whole point is that she sounds like a person.
+   - Keep it under 300 words, and keep **at most three "do not" lines**. The ones worth spending
+     them on: do not invent facts the file does not contain, do not claim to have booked or sent
+     anything unless a tool did it, and do not give clinical or legal advice if the business is
+     in that kind of trade. Everything else is better said as what she *does*.
    - Required in every persona, because everything she writes is read out loud: plain text only,
      no markdown, no asterisks, no bullet points, one or two short spoken sentences at a time,
      one question at a time, and stop when the caller interrupts.
    - Tell her to look things up *first, every time*, and to say she will check with the team when
      the file does not cover it, rather than filling the gap herself.
+   - Give the node a **fixed opening line** in `task_instruction`: `Open with exactly these words:
+     ...`. Without it her greeting drifts between calls, which is noticeable when anyone records
+     more than one take.
    - The `rag` function's `knowledge_base_id` is a placeholder until step 5 creates the real one.
    - Give each tool a description that says **when to call it**, not what it is. That description
      is the only thing the model reads when deciding. For vision, ask her to *name* what she sees
@@ -82,10 +93,19 @@ Write the files first, every time. They are the deliverable even when there is n
      python3 scripts/akapulu_api.py doc-upload <kb_id> akapulu/knowledge.txt --name "site content"
      python3 scripts/akapulu_api.py doc-wait <kb_id>
      ```
+   - **Knowledge base names are unique per account.** Before creating one, assume a name as plain
+     as the business name may already be taken, and pick something specific up front, like
+     "Harbour Lane Dental — site content". Retrying a create with a new name costs a wasted call
+     and looks like a failure to anyone watching.
    - Put the real `kb_id` into the `rag` function, validate again, then create the scenario.
    - **The avatar is the one thing with no API.** Ask the user to open
      https://akapulu.com/catalog, pick a face, and copy the UUID out of that avatar's page URL.
      Never guess one, never reuse an id from an example.
+   - **Ask for it once, and ask for it here.** Not at the start, not while the files are being
+     written. By the time you ask, the knowledge base should be `completed` and the scenario
+     should have passed validation with the real id in it, so the avatar UUID is the only thing
+     standing between the user and a live link. Asking earlier interrupts a run that was going
+     fine and makes the user think something is broken.
      ```bash
      python3 scripts/akapulu_api.py scenario-create akapulu/scenario.json \
         --name "<business> front desk" --avatar <uuid> --keyword "<her name>"
@@ -131,6 +151,8 @@ Written, not created — no AKAPULU_API_KEY found.
   response or from the user.
 - Never put a fact in the knowledge file that is not on the site.
 - Never put a fact in `role_instruction`. Facts live in the knowledge file, always.
+- Never ask for the avatar UUID before the knowledge base is completed and the scenario has
+  passed validation. It is the last thing you need, so it is the last thing you ask for.
 - Never create a scenario from JSON that has not passed the validator.
 - Never embed the hosted link in an iframe or a popup.
 - State the free plan's limits before the first live call: 10 credits total, a 3 minute cap per
