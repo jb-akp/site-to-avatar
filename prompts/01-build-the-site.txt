@@ -1,0 +1,15 @@
+Build me a complete one-page website for a dental practice. Put in maximum effort, and do not ask me any questions, just make good choices and build the whole thing.
+
+THE BUSINESS: Harbour Lane Dental, a family dental practice. Check-ups, whitening, Invisalign, same-day emergency appointments. Free parking, open Monday to Saturday. The one thing a visitor should do here is book an appointment. Calm, clean, reassuring.
+
+Before you write any code, use internet search to look at five real, well-designed dental or medical websites and take the craft from them, not the layout.
+
+Generate every image yourself with the imagegen skill, gpt-image-2 at medium quality: one hero photo of the reception, one of a dentist with a patient, one of the team. Same practice, same light, same colours in every image. No stock photos. If image generation is not available to you, do not stop and do not ask me, build the page with clean CSS shapes and colour blocks where the photos would go, and tell me at the end that the photos are missing.
+
+Plain HTML, CSS and vanilla JavaScript, all in one folder. No frameworks, no build step, no backend. It has to work if I double-click index.html.
+
+Two rules that are not negotiable:
+- Leave the bottom right corner of the page completely empty. No chat bubble, nothing. I am putting a button there later.
+- Put this exact line right before </body> and leave it there:  <!-- WIDGET SLOT -->
+
+When you are done, start a local server on port 4173, give me the link, and tell me in three plain sentences what you took from your research and what you generated.

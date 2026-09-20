@@ -1,0 +1,5 @@
+The images did not generate. I am explicitly asking you to use the imagegen skill's CLI fallback with gpt-image-2 at medium quality. OPENAI_API_KEY is now in my shell profile and I have relaunched VS Code.
+
+Generate one wide hero image and two supporting images for Harbour Lane Dental, all clearly the same practice: same interior style, same light, same colours, same people where people appear. No stock, no placeholders. Save them to /images, put them into index.html where you left the CSS illustrations, with real alt text. Do not add any fixed or sticky element while you do it. Leave <!-- WIDGET SLOT --> exactly where it is.
+
+Then reload the server on port 4173 and tell me in two plain sentences what you made.
