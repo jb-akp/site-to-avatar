@@ -80,6 +80,12 @@ Write the files first, every time. They are the deliverable even when there is n
    - Give the node a **fixed opening line** in `task_instruction`: `Open with exactly these words:
      ...`. Without it her greeting drifts between calls, which is noticeable when anyone records
      more than one take.
+   - **The greeting leads with her name and the business, not with the word AI.** "Hi, I'm Clara
+     at Harbour Lane Dental. How can I help you today?" The hosted page already carries an AI
+     label and a watermark, so the disclosure is on screen before she speaks. Put it in the
+     persona instead: if anyone asks whether she is a person, she says plainly that she is an AI
+     assistant and carries on helping. Honest either way, and it does not spend her first four
+     words on a disclaimer.
    - Follow the opening line with **"then wait for the caller to speak"**, and say tools are for
      answering a question that has been asked. She still greets first, but without this her
      opening turn also fires a lookup nobody asked for. It costs a retrieval call and the tool
