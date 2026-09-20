@@ -73,8 +73,9 @@ quote you a price.
 
 ## What is actually free
 
-Akapulu's free plan gives you **10 credits in total**, a **3 minute cap** on any one call, and a
-**watermark** on the avatar. That is enough to build this, test it properly, and show someone.
+Akapulu's free plan gives you **10 minutes in total**, a **3 minute cap** on any one call, **2
+conversations at once**, and a **watermark** on the avatar. Those numbers are the ones the
+platform enforces, not a summary. That is enough to build this, test it properly, and show someone.
 It is not enough to run a business on. Pricing is at [akapulu.com](https://akapulu.com).
 
 Credits are spent when someone **talks to her**. Writing the two files, creating a knowledge base
