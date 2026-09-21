@@ -17,8 +17,12 @@ mkdir -p "$target/.agents"
 cp -R "$here/.agents/skills" "$target/.agents/"
 cp "$here/AGENTS.md" "$target/AGENTS.md"
 
-if [ -f "$here/.env" ] && [ ! -f "$target/.env" ]; then
-  grep '^AKAPULU_API_KEY=' "$here/.env" > "$target/.env" 2>/dev/null || true
+if [ ! -f "$target/.env" ]; then
+  if [ -f "$here/.env" ] && grep -q '^AKAPULU_API_KEY=.\+' "$here/.env"; then
+    grep '^AKAPULU_API_KEY=' "$here/.env" > "$target/.env"
+  else
+    printf '# Get a free key at https://akapulu.com -> Settings -> API keys\nAKAPULU_API_KEY=\n' > "$target/.env"
+  fi
 fi
 grep -qs '^\.env$' "$target/.gitignore" || printf '\n.env\nakapulu/\n' >> "$target/.gitignore"
 
@@ -27,8 +31,12 @@ echo "  .agents/skills/akapulu-avatar/           the skill"
 echo "  .agents/skills/akapulu-avatar/scripts/   the validator and the API client"
 echo "  AGENTS.md                                so Codex reads the skill on open"
 echo
-[ -f "$target/.env" ] && echo "Your key came across too." \
-  || echo "Next: run .agents/skills/akapulu-avatar/scripts/setup.sh in that folder to add your Akapulu key."
+if grep -q '^AKAPULU_API_KEY=.\+' "$target/.env" 2>/dev/null; then
+  echo "Your key came across too."
+else
+  echo "Next: open .env in that folder and paste your Akapulu key after AKAPULU_API_KEY="
+  echo "  (free key at https://akapulu.com -> Settings -> API keys)"
+fi
 echo
 echo "Then open $target in Codex and say:"
 echo "  build me an avatar assistant from this site"

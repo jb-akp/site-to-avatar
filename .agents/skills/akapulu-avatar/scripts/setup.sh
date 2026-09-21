@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 # Put your Akapulu key in .env and check that it works.
 set -euo pipefail
-cd "$(dirname "$0")/.."
+# the site root is whichever parent holds .agents/ — not a fixed number of "..",
+# which silently wrote .env inside the skill folder where nothing could find it.
+d="$(cd "$(dirname "$0")" && pwd)"
+while [ "$d" != "/" ] && [ ! -d "$d/.agents" ]; do d="$(dirname "$d")"; done
+[ -d "$d/.agents" ] || { echo "Could not find your site folder (no .agents/ above me)."; exit 1; }
+cd "$d"
 
 if [ -f .env ] && grep -q '^AKAPULU_API_KEY=.\+' .env && ! grep -q '^AKAPULU_API_KEY=YOUR_' .env; then
   echo "Found a key in .env."
