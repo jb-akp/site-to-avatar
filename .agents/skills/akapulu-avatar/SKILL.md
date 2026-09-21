@@ -120,6 +120,25 @@ Write the files first, every time. They are the deliverable even when there is n
    ```
    Fix what it reports and run it again. Do not call the API on JSON that has not passed.
 
+4b. **Verify the build against the site, then judge it yourself.** Legal JSON is not the same as
+   an honest avatar. Run:
+   ```bash
+   python3 .agents/skills/akapulu-avatar/scripts/verify_build.py
+   ```
+   It checks five things: every price, phone number, email and time in `knowledge.txt` actually
+   appears on the site (**Grounding** — this is the one that matters, it is what stops her
+   inventing a price); no facts are baked into `role_instruction` (**Persona purity** — a fact
+   in the persona means changing the file will not change her answer); every heading on the site
+   is represented (**Coverage**); sizes are inside the caps (**Limits**); the `rag` tool points at
+   a real knowledge base (**Wiring**). A FAIL exits non-zero — fix and rebuild, do not create
+   anything. A Coverage WARN is a judgement call: decide whether that section is a tagline or
+   something she should know.
+
+   Then do the check no script can. Re-read `knowledge.txt` with the site open beside it and ask
+   of every claim: *can I point at where the site says this?* If you cannot, cut the line. The
+   script catches invented numbers. It cannot catch an invented promise, and "we offer same-day
+   appointments" is a promise the business now has to keep.
+
 5. **Create it, if the user wants that.**
    - Without a key: stop here and tell them exactly where the two files go — `scenario.json`
      into the scenario page's JSON mode, `knowledge.txt` onto akapulu.com/knowledge-bases. Both
@@ -167,6 +186,7 @@ Built. [Talk to <her name>](https://live.akapulu.com/session/...).
 - [Knowledge](akapulu/knowledge.txt): N KB from M page(s).
 - [Scenario](akapulu/scenario.json): one node, two tools — validated.
 - Avatar: `<uuid>`
+- Verified: grounding, persona purity, coverage, limits, wiring — <the QA report's verdict line>
 
 Try: "<question only this site can answer>" · "<a second one>" · "What am I holding?"
 ```

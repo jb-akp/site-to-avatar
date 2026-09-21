@@ -103,6 +103,18 @@ python3 .agents/skills/akapulu-avatar/scripts/akapulu_api.py scenario-create aka
 `validate_scenario.py` is worth running on its own even if you hand-write your JSON. It enforces
 every documented rule plus three that are not in the docs, each of which was found the hard way.
 
+`verify_build.py` answers the harder question. Legal JSON is not an honest avatar, so it checks
+the build against the site it came from: every price, phone number, email and time she can say
+has to actually appear on your page, and no fact may be baked into her personality instead of
+her knowledge file. That second one matters more than it sounds. A fact in the persona means
+editing the knowledge file will not change her answer, and you will not find out until a
+customer does.
+
+```bash
+python3 .agents/skills/akapulu-avatar/scripts/verify_build.py
+```
+
+
 ## Project structure
 
 ```
@@ -112,6 +124,7 @@ every documented rule plus three that are not in the docs, each of which was fou
   references/api.md               endpoints, and what has no API at all
   references/gotchas.md           the three undocumented constraints
   scripts/validate_scenario.py    the validator, runs offline, no key needed
+  scripts/verify_build.py         checks the build against the site it came from
   scripts/akapulu_api.py          the REST client
   scripts/setup.sh                key setup
 scripts/install.sh                copies that one folder into your site
