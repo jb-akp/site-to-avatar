@@ -116,10 +116,9 @@ Write the files first, every time. They are the deliverable even when there is n
 
 4. **Validate before spending anything.**
    ```bash
-   python3 scripts/validate_scenario.py akapulu/scenario.json
+   python3 .agents/skills/akapulu-avatar/scripts/validate_scenario.py akapulu/scenario.json
    ```
    Fix what it reports and run it again. Do not call the API on JSON that has not passed.
-   In Codex the path is `.agents/skills/akapulu-avatar/`; in Claude Code, `.claude/skills/`.
 
 5. **Create it, if the user wants that.**
    - Without a key: stop here and tell them exactly where the two files go — `scenario.json`
@@ -127,9 +126,9 @@ Write the files first, every time. They are the deliverable even when there is n
      files are already useful. Do not treat this as a failure.
    - With a key, in this order, because each step feeds the next:
      ```bash
-     python3 scripts/akapulu_api.py kb-create "<business name>" --description "site content"
-     python3 scripts/akapulu_api.py doc-upload <kb_id> akapulu/knowledge.txt --name "site content"
-     python3 scripts/akapulu_api.py doc-wait <kb_id>
+     python3 .agents/skills/akapulu-avatar/scripts/akapulu_api.py kb-create "<business name>" --description "site content"
+     python3 .agents/skills/akapulu-avatar/scripts/akapulu_api.py doc-upload <kb_id> akapulu/knowledge.txt --name "site content"
+     python3 .agents/skills/akapulu-avatar/scripts/akapulu_api.py doc-wait <kb_id>
      ```
    - **Knowledge base names are unique per account.** Before creating one, assume a name as plain
      as the business name may already be taken, and pick something specific up front, like
@@ -146,7 +145,7 @@ Write the files first, every time. They are the deliverable even when there is n
      standing between the user and a live link. Asking earlier interrupts a run that was going
      fine and makes the user think something is broken.
      ```bash
-     python3 scripts/akapulu_api.py scenario-create akapulu/scenario.json \
+     python3 .agents/skills/akapulu-avatar/scripts/akapulu_api.py scenario-create akapulu/scenario.json \
         --name "<business> front desk" --avatar <uuid> --keyword "<her name>"
      ```
    - The response carries the hosted link. That link is the deliverable.

@@ -55,7 +55,7 @@ def key_or_die():
     key = load_key()
     if not key:
         die("No AKAPULU_API_KEY found in the nearest .env or the environment.\n"
-            "Run scripts/setup.sh, or add this line to .env:\n"
+            "Run .agents/skills/akapulu-avatar/scripts/setup.sh, or add this line to .env:\n"
             "  AKAPULU_API_KEY=your-key-here\n"
             "Get one at https://akapulu.com (the free plan is enough to finish the tutorial).")
     return key

@@ -38,15 +38,14 @@ cd site-to-avatar
 ./scripts/install.sh ~/path/to/your-website
 ```
 
-That copies the skill, the scripts and the agent instructions into your site's folder, for both
-Codex and Claude Code. Then:
+That copies the skill, its scripts and the agent instructions into your site's folder. Then:
 
 ```bash
 cd ~/path/to/your-website
-./scripts/setup.sh          # asks for your Akapulu key, writes .env, verifies it
+.agents/skills/akapulu-avatar/scripts/setup.sh    # asks for your Akapulu key, writes .env, verifies it
 ```
 
-Open that folder in **Codex** or **Claude Code** and say:
+Open that folder in **Codex** and say:
 
 > build me an avatar assistant from this site
 
@@ -58,7 +57,7 @@ Clone this repo, open **this** folder in your agent, and say:
 
 > install this skill into ~/path/to/my-website
 
-It reads `AGENTS.md` or `CLAUDE.md` and does the copying for you.
+It reads `AGENTS.md` and does the copying for you.
 
 **No key yet?** You still get most of it. The skill always writes both files first, and they work
 on their own: paste `scenario.json` into JSON mode on a new scenario at akapulu.com, and upload
@@ -84,20 +83,20 @@ like and only spend when you pick up the phone.
 
 **You do need a free account before you start**, for two reasons: the API key, and the avatar
 catalog, which is behind a login. Sign up at [akapulu.com](https://akapulu.com), then run
-`./scripts/setup.sh`.
+`.agents/skills/akapulu-avatar/scripts/setup.sh`.
 
-The agent side costs whatever your Codex or Claude subscription costs. If you use an OpenAI API
+The agent side costs whatever your Codex subscription costs. If you use an OpenAI API
 key instead of a ChatGPT login, reading a site and writing these two files is cents, not dollars.
 
 ## Useful commands
 
 ```bash
-python3 scripts/validate_scenario.py akapulu/scenario.json   # check JSON before you spend
-python3 scripts/akapulu_api.py check                          # is my key working
-python3 scripts/akapulu_api.py kb-create "My Business"
-python3 scripts/akapulu_api.py doc-upload <kb_id> akapulu/knowledge.txt
-python3 scripts/akapulu_api.py doc-wait <kb_id>
-python3 scripts/akapulu_api.py scenario-create akapulu/scenario.json \
+python3 .agents/skills/akapulu-avatar/scripts/validate_scenario.py akapulu/scenario.json   # check JSON before you spend
+python3 .agents/skills/akapulu-avatar/scripts/akapulu_api.py check                          # is my key working
+python3 .agents/skills/akapulu-avatar/scripts/akapulu_api.py kb-create "My Business"
+python3 .agents/skills/akapulu-avatar/scripts/akapulu_api.py doc-upload <kb_id> akapulu/knowledge.txt
+python3 .agents/skills/akapulu-avatar/scripts/akapulu_api.py doc-wait <kb_id>
+python3 .agents/skills/akapulu-avatar/scripts/akapulu_api.py scenario-create akapulu/scenario.json \
     --name "Front desk" --avatar <uuid> --keyword Clara
 ```
 
@@ -107,15 +106,15 @@ every documented rule plus three that are not in the docs, each of which was fou
 ## Project structure
 
 ```
-.agents/skills/akapulu-avatar/    the skill, for Codex
-.claude/skills/akapulu-avatar/    the same skill, for Claude Code
+.agents/skills/akapulu-avatar/    everything the agent needs, in one folder
   SKILL.md                        the workflow
   references/scenario-schema.md   the JSON shape and every validation rule
   references/api.md               endpoints, and what has no API at all
   references/gotchas.md           the three undocumented constraints
-scripts/validate_scenario.py      the validator, runs offline, no key needed
-scripts/akapulu_api.py            the REST client
-scripts/setup.sh                  key setup
+  scripts/validate_scenario.py    the validator, runs offline, no key needed
+  scripts/akapulu_api.py          the REST client
+  scripts/setup.sh                key setup
+scripts/install.sh                copies that one folder into your site
 prompts/                          build the site · add the images · add the button
 example/                          a real generated knowledge file and scenario
 ```

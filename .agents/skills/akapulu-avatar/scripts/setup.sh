@@ -20,7 +20,7 @@ else
 fi
 
 echo
-python3 scripts/akapulu_api.py check
+python3 .agents/skills/akapulu-avatar/scripts/akapulu_api.py check
 echo
-echo "Ready. Open this folder in Codex or Claude Code and say:"
+echo "Ready. Open this folder in Codex and say:"
 echo "  build me an avatar assistant from this site"

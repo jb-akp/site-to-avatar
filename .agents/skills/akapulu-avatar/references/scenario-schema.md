@@ -1,7 +1,7 @@
 # Scenario JSON: the shape and every rule
 
 Source: https://docs.akapulu.com/guides/scenarios/using-json
-`scripts/validate_scenario.py` enforces all of it. Run it rather than reading this twice.
+`.agents/skills/akapulu-avatar/scripts/validate_scenario.py` enforces all of it. Run it rather than reading this twice.
 
 ## Shape
 
